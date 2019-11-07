@@ -16,8 +16,8 @@ RSpec.describe Startup do
     end
 
     it "get error if attempting to change founder" do
-      startup = Startup.new("TestToucher", "Elon Musk")
-      expect (startup.founder = "Peter Parker").to raise_error
+      startup = Startup.new("TestToucher", "Elon Musk", "Software")
+      expect { startup.founder = "Peter Parker" }.to raise_error(NoMethodError)
     end
 
   end
