@@ -1,4 +1,5 @@
 require_relative '../app/models/startup'
+require_relative '../app/models/venture_capitalist'
 
 RSpec.describe Startup do
   describe "#name" do
@@ -81,6 +82,16 @@ RSpec.describe Startup do
       
     end
 
+  end
+
+  describe "#add_investor" do
+    it "can add an investor to startup" do
+      startup = Startup.new("TestToucher", "Elon Musk", "Software")
+      investor = VentureCapitalist.new("VC Unlimited", 100000)
+      startup.add_investor(investor)
+      expect(startup.investors).to be_a(Array)
+      expect(startup.investors).to include(investor)
+    end
   end
 
 end
