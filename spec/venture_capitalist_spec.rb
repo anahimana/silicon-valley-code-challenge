@@ -17,9 +17,9 @@ RSpec.describe VentureCapitalist do
 
     describe ".all" do
         it "returns an array of all venture capitalists" do
-            mark = VentureCapitalist("Mark", 1000000000)
-            mohammad = VentureCapitalist("Mohammad", 30000000)
-            jerico = VentureCapitalist("Jerico", 900000000)
+            mark = VentureCapitalist.new("Mark", 1000000000)
+            mohammad = VentureCapitalist.new("Mohammad", 30000000)
+            jerico = VentureCapitalist.new("Jerico", 900000000)
             vcs = VentureCapitalist.all
         expect(vcs).to include(mark, mohammad, jerico)
         end
@@ -27,9 +27,9 @@ RSpec.describe VentureCapitalist do
 
     describe ".tres_commas_club" do
         it "returns an array of all venture capitalists in the Trés Commas club" do
-            mitch = VentureCapitalist("Mitch", 6000000000)
-            benjmain = VentureCapitalist("Benjamin", 200000)
-            fsnb = VentureCapitalist("FSNB", 110929283747)
+            mitch = VentureCapitalist.new("Mitch", 6000000000)
+            benjmain = VentureCapitalist.new("Benjamin", 200000)
+            fsnb = VentureCapitalist.new("FSNB", 110929283747)
             three_comma_vcs = VentureCapitalist.tres_commas_club
         expect(three_comma_vcs).to include(mitch, fsnb)
         expect(three_comma_vcs).not_to include(benjmain)
