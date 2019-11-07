@@ -74,12 +74,11 @@ RSpec.describe Startup do
     it "return an array of all of the different startup domains" do
       startup = Startup.new("TestToucher", "Elon Musk", "Software")
       startup3 = Startup.new("DoodleDodger", "Frank Muncher", "SNDY")
-      domains = "Software", "SNDY"
-      not_domains = "SNY", "Softwire"
       startup_domains = Startup.domains
-      expect(founder_startup).to be_a(Array)
-      expect(startup_domains).to include(domains)
-      expect(startup_domains).to not_to(not_domains)
+      expect(startup_domains).to be_a(Array)
+      expect(startup_domains).to include("Software", "SNDY")
+      expect(startup_domains).not_to include("SNY", "Softwire")
+      
     end
 
   end
