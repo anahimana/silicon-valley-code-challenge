@@ -30,7 +30,8 @@ RSpec.describe Startup do
 
     it "get an error if attempting to change domain" do
       startup = Startup.new("TestToucher", "Elon Musk", "Software")
-      expect (startup.domain = "Finance").to raise_error
+      expect { startup.domain = "Finance" }.to raise_error(NoMethodError)
+
     end
   end
 
