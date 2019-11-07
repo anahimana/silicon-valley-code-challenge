@@ -1,12 +1,13 @@
 require 'pry'
 class Startup
     attr_accessor :name
-    attr_reader :founder, :domain
+    attr_reader :founder, :domain, :investors
     @@all = []
     def initialize(name, founder, domain)
         @name = name
         @founder = founder
         @domain = domain
+        @investors = []
         @@all << self
     end
 
@@ -24,5 +25,9 @@ class Startup
 
     def self.domains()
         self.all.map {|startup| startup.domain}.uniq
+    end
+
+    def add_investor(investor)
+        self.investors << investor
     end
 end
