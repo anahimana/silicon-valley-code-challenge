@@ -53,7 +53,6 @@ RSpec.describe Startup do
       startup2 = Startup.new("FreakyFinder", "Duck Dodger", "Something")
       startup3 = Startup.new("DoodleDodger", "Frank Muncher", "SNDY")
       startups = Startup.all
-      expect(startups.count).to eq(3)
       expect(startups).to include(startup, startup2, startup3)
     end
 
@@ -65,7 +64,6 @@ RSpec.describe Startup do
       startup3 = Startup.new("DoodleDodger", "Frank Muncher", "SNDY")
       founder_startup = Startup.find_by_founder("Frank Muncher")
       founder_startup2 = Startup.find_by_founder("Elon Musk")
-      expect(founder_startup).to eq(3)
       expect(founder_startup).to be_a(Startup)
       expect(founder_startup2).to be_a(Startup)
     end
