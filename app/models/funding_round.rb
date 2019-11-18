@@ -9,7 +9,6 @@ class FundingRound
         @startup = startup
         @venture_capitalist = vc
         @@all << self
-        startup.add_investor(self.venture_capitalist)
     end
 
     def self.all()

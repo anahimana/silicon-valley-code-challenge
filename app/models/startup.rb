@@ -1,13 +1,14 @@
-require 'pry'
+require_relative './funding_round'
+require_relative './venture_capitalist'
+
 class Startup
     attr_accessor :name
-    attr_reader :founder, :domain, :investors
+    attr_reader :founder, :domain
     @@all = []
     def initialize(name, founder, domain)
         @name = name
         @founder = founder
         @domain = domain
-        @investors = []
         @@all << self
     end
 
@@ -27,7 +28,27 @@ class Startup
         self.all.map {|startup| startup.domain}.uniq
     end
 
-    def add_investor(investor)
-        self.investors << investor
+    def sign_contract(vc, type, amount)
+        new_fr = FundingRound.new(type, amount, vc, self)
+    end
+
+    def funding_rounds 
+        rounds = FundingRound.all.select{|rounds| rounds.startup == self}
+    end
+
+    def num_funding_rounds
+        funding_rounds.count
+    end
+
+    def investors 
+        funding_rounds.map {|round| round.venture_capitalist}.uniq
+    end
+
+    def total_funds
+        funding_rounds.map {|round| round.investment }.sum
+    end
+
+    def big_investors
+        VentureCapitalist.tres_commas_club.select {|vc| investors.include?(vc)}
     end
 end
